@@ -1,0 +1,144 @@
+namespace Lab1
+{
+    public class Blue
+    {
+        public bool Task1(int a, int b)
+        {
+            bool answer = false;
+
+            // code here
+            // Check if both numbers are positive OR both are negative
+            if ((a > 0 && b > 0) || (a < 0 && b < 0))
+                answer = true;
+            // end
+
+            return answer;
+        }
+
+        public bool Task2(double d)
+        {
+            bool answer = false;
+
+            // code here
+            // Get the whole number part
+            double wholeNumber = (int)d;
+            // Get the fractional part
+            double fractional = d - wholeNumber;
+            
+            // Check if fractional part exists (with 0.0001 precision)
+            if (fractional > 0.0001 || fractional < -0.0001)
+                answer = true;
+            // end
+
+            return answer;
+        }
+
+        public bool Task3(int a, int b)
+        {
+            bool answer = false;
+
+            // code here
+            // Check if b is not zero AND division has no remainder
+            if (b != 0 && a % b == 0)
+                answer = true;
+            // end
+
+            return answer;
+        }
+
+        public double Task4(double d, double f, double g)
+        {
+            double answer = 0;
+
+            // code here
+            // Calculate absolute values
+            double absD = System.Math.Abs(d);
+            double absF = System.Math.Abs(f);
+            double absG = System.Math.Abs(g);
+            
+            // Find the number with largest absolute value
+            if (absD >= absF && absD >= absG)
+                answer = d;
+            else if (absF >= absG)
+                answer = f;
+            else
+                answer = g;
+            // end
+
+            return answer;
+        }
+
+        public double Task5(double x)
+        {
+            double answer = 0;
+
+            // code here
+            double L = 1.0;  // Constant value
+            
+            // Calculate function based on conditions
+            if (x > -1 && x <= 0)
+                answer = x + 1.0 / L;
+            else if (x > 0)
+                answer = 1.0 / L;
+            // end
+
+            return answer;
+        }
+
+        public bool Task6(double circleS, double squareS)
+        {
+            bool answer = false;
+
+            // code here
+            // Calculate circle diameter from area
+            double diameter = 2 * System.Math.Sqrt(circleS / 3.14);
+            
+            // Calculate square side from area
+            double side = System.Math.Sqrt(squareS);
+            
+            // Check if circle fits in square
+            if (diameter <= side)
+                answer = true;
+            // end
+
+            return answer;
+        }
+
+        public double Task7(double d, double f)
+        {
+            double answer = 0;
+
+            // code here
+            // Return the larger number
+            if (d > f)
+                answer = d;
+            else
+                answer = f;
+            // end
+
+            return answer;
+        }
+
+        public bool Task8(int a, int b, int c)
+        {
+            bool answer = false;
+
+            // code here
+            // Calculate half coins for each son (rounded down)
+            int coinsElder = a / 2;      // Oldest son's coins
+            int coinsMiddle = b / 2;     // Middle son's coins
+            int coinsYounger = c / 2;    // Youngest son's coins
+            
+            // Check if all have equal coins
+            if (coinsElder == coinsMiddle && coinsMiddle == coinsYounger)
+                answer = true;
+            
+            // Check if adding 1 coin to youngest makes them equal
+            else if (coinsElder == coinsMiddle && coinsMiddle == coinsYounger + 1)
+                answer = true;
+            // end
+
+            return answer;
+        }
+    }
+}
