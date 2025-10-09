@@ -1,16 +1,19 @@
+using System;
+
 namespace Lab1
 {
     public class Blue
     {
-        public bool Task1(double a, double b)
+        public bool Task1(int a, int b)
         {
             bool answer = false;
 
             // code here
-            if (a == 0 || b == 0)
-                answer = false;
-            else if ((a > 0 && b > 0) || (a < 0 && b < 0))
-                answer = true;
+            if (a != 0 && b != 0)
+            {
+                if ((a > 0 && b > 0) || (a < 0 && b < 0))
+                    answer = true;
+            }
             // end
 
             return answer;
@@ -45,8 +48,8 @@ namespace Lab1
             double answer = 0;
 
             // code here
-            double max = Math.Abs(d) > Math.Abs(f) ? d : f;
-            answer = Math.Abs(max) > Math.Abs(g) ? max : g;
+            double m = Math.Abs(d) >= Math.Abs(f) ? d : f;
+            answer = Math.Abs(m) >= Math.Abs(g) ? m : g;
             // end
 
             return answer;
@@ -59,7 +62,7 @@ namespace Lab1
             // code here
             if (x <= -1)
                 answer = 0;
-            else if (x > -1 && x <= 0)
+            else if (x <= 0)
                 answer = x + 1;
             else
                 answer = 1;
@@ -74,17 +77,17 @@ namespace Lab1
 
             // code here
             double r = Math.Sqrt(circleS / Math.PI);
-            double side = Math.Sqrt(squareS);
-            if (2 * r <= side)
+            double a = Math.Sqrt(squareS);
+            if (2 * r <= a)
                 answer = true;
             // end
 
             return answer;
         }
 
-        public int Task7(double d, double f)
+        public double Task7(double d, double f)
         {
-            int answer = 0;
+            double answer = 0;
 
             // code here
             if (Math.Abs(d) < Math.Abs(f))
@@ -108,19 +111,18 @@ namespace Lab1
             int s1 = a / 2;
             int s2 = b / 2;
             int s3 = c / 2;
-            if (s1 + s2 + s3 + ((a % 2 == 1 || b % 2 == 1 || c % 2 == 1) ? 1 : 0) == s1 + s2 + s3)
-                answer = false;
+            int total = s1 + s2 + s3;
 
-            int halfA = a / 2;
-            int halfB = b / 2;
-            int halfC = c / 2;
-            int total = halfA + halfB + halfC;
-            int min = Math.Min(a, Math.Min(b, c));
-            if ((a / 2 + b / 2 + c / 2) * 2 + ((a % 2 + b % 2 + c % 2) > 0 ? 1 : 0) == total * 2)
-                answer = false;
+            bool Check(int t)
+            {
+                if (t % 3 != 0) return false;
+                int k = t / 3;
+                if (k < 1) return false;
+                if (k > a || k > b || k > c) return false;
+                return true;
+            }
 
-            int totalCoins = a / 2 + b / 2 + c / 2;
-            if ((a % 2 == 1 || b % 2 == 1 || c % 2 == 1) && ((a + 1) / 2 + b / 2 + c / 2) * 2 == totalCoins * 2 + 1)
+            if (Check(total) || Check(total + 1))
                 answer = true;
             // end
 
